@@ -30,6 +30,7 @@ function QuestTemplate(props){
 
     return(
         <>
+        <h1>New Feature</h1>
         <h1 className="questTitle" >Quest Creator</h1>
         <h3>Basic Info:</h3>
         <InputForm {...inputTitle} name="Title"/>
