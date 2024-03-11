@@ -1,0 +1,52 @@
+import React from "react";
+//ARRAY
+// push tilføjer i slutnngen af arrayet
+//unshift tilføjer til starten af arrayet
+//slice kopiere arrayet
+//concat sætter to arrays sammen
+
+//Spread samler en del af de ovenstående funktioner
+
+let arrayA=[1,2,3];
+let arrayB =[4,5,6];
+let CopyA=[...arrayA]   //= slice, den kopierer
+let merge=[...arrayA,...arrayB] //fungere som concat
+let cc=[88,...arrayB,...arrayA,...CopyA,-50]; //laver noget nyt
+
+//dette fungere også med objekter
+let objA={name:"alice", health: 100}
+
+let newObjA={id: 100, ...objA}
+
+//brug spread til at angive attributter
+
+function ComponentA(props){
+    let objA={name:"alice", health: 100}
+    return <ComponentB{...objA}/>
+}
+
+function ComponentB(props){
+    return(
+    <h3>{props.name} has {props.health}</h3>
+)}
+
+class ComponentC extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={values:[1,2,3]}
+        this.handleUpdates=this.handleUpdates.bind(this)
+    }
+    handleUpdates(){
+        this.setState(prevState=>{
+            let valuesCopy=prevState.values.slice() //vi må IKKe ændre prevState direkt, men laver en kopi
+            valuesCopy.push(4);
+            return {value: valuesCopy} //eller med spread value: [...prevState.value,4]
+        })
+    }
+    render(){
+        return(
+            <>
+            </>
+        )
+    }
+}
